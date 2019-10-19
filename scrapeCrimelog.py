@@ -1,4 +1,4 @@
-import sys, os, requests, gspread
+import sys, os, requests, gspread, json
 from flask import Flask, request, url_for, render_template, jsonify
 from oauth2client.service_account import ServiceAccountCredentials
 
@@ -7,10 +7,20 @@ app = Flask(__name__)
 def scrapeCrimelog():
     scope = ['https://spreadsheets.google.com/feeds',
              'https://www.googleapis.com/auth/drive']
-    credentials = ServiceAccountCredentials.from_json_keyfile_name('api_key.json', scope)
-    gc = gspread.authorize(credentials)
-    url = "https://docs.google.com/spreadsheets/d/12_iuy8fyGuZ8KreBWNmaJirSsSmD1Lf3D10UVDUJ3rc/edit#gid=0"
+    
+    # read env data
+    credentialsRaw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
 
+    # generate credentails
+    service_account_info = json.loads(credentials_raw)
+    credentials = ServiceAccountCredentials.from_service_account_info(
+        service_account_info, scope)
+
+    # define client
+    gc = gspread.authorize(credentials)
+
+    url = "https://docs.google.com/spreadsheets/d/12_iuy8fyGuZ8KreBWNmaJirSsSmD1Lf3D10UVDUJ3rc/edit#gid=0"
+    
     log = gc.open_by_url(url).sheet1.col_values(1)
 
     crime_Dict = {
