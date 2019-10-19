@@ -12,11 +12,11 @@ def scrapeCrimelog():
     credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
 
     # generate credentails
-    service_account_info = json.loads(credentials_raw)
-    #credentials = ServiceAccountCredentials.from_service_account_info(
-    #    service_account_info, scope)
-    credentials = service_account.Credentials.from_service_account_info(
-    service_account_info)
+    # service_account_info = json.loads(credentials_raw)
+    credentials = ServiceAccountCredentials.from_service_account_info(
+        credentials_raw, scope)
+    #credentials = service_account.Credentials.from_service_account_info(
+    #service_account_info)
     #credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
 
     # define client
