@@ -13,7 +13,6 @@ def scrapeCrimelog():
 
     # generate credentails
     service_account_info = json.loads(credentials_raw)
-    '''
     credentials = ServiceAccountCredentials.from_service_account_info(
         service_account_info, scope)
     #credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
@@ -135,8 +134,8 @@ def scrapeCrimelog():
         
     return jsonify(crime_Dict)
     #print(crime_Dict)
-    '''
-    return "Hello World"
+
+    #return "Hello World"
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     #scrapeCrimelog()
