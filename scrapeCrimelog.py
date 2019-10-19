@@ -138,5 +138,5 @@ def scrapeCrimelog():
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     #scrapeCrimelog()
-    #port = int(os.environ.get('PORT', 3000))
+    port = int(os.environ.get('PORT', 3000))
     app.run('localhost', port)
