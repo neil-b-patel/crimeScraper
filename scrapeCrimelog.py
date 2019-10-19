@@ -12,6 +12,7 @@ def scrapeCrimelog():
     credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
 
     # generate credentails
+    '''
     service_account_info = json.loads(credentials_raw)
     credentials = ServiceAccountCredentials.from_service_account_info(
         service_account_info, scope)
@@ -134,7 +135,8 @@ def scrapeCrimelog():
         
     return jsonify(crime_Dict)
     #print(crime_Dict)
-
+    '''
+    return "Hello World"
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     #scrapeCrimelog()
