@@ -23,7 +23,8 @@ def scrapeCrimelog():
     url = "https://docs.google.com/spreadsheets/d/12_iuy8fyGuZ8KreBWNmaJirSsSmD1Lf3D10UVDUJ3rc/edit#gid=0"
     
     log = gc.open_by_url(url).sheet1.col_values(1)
-
+    
+    '''
     crime_Dict = {
                     "crimes": [
                         {
@@ -134,8 +135,9 @@ def scrapeCrimelog():
         
     return jsonify(crime_Dict)
     #print(crime_Dict)
+    '''
 
-    #return "Hello World"
+    return "Hello World"
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
     #scrapeCrimelog()
