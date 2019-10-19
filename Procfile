@@ -1,1 +1,1 @@
-web: gunicorn scrapeCrimelog:app
+web: gunicorn -b :$PORT scrapeCrimelog:app
