@@ -11,13 +11,12 @@ def scrapeCrimelog():
     # read env data
     credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
 
-    # generate credentails
-    # service_account_info = json.loads(credentials_raw)
+    # parse env data as a json
+    service_account_info = json.loads(credentials_raw)
+
+    # generate credentials
     credentials = ServiceAccountCredentials.from_json_keyfile_dict(
-        credentials_raw, scope)
-    #credentials = service_account.Credentials.from_service_account_info(
-    #service_account_info)
-    #credentials = ServiceAccountCredentials.from_json_keyfile_name("credentials.json", scope)
+        credentials_json, scope)
 
     # define client
     gc = gspread.authorize(credentials)
@@ -137,10 +136,7 @@ def scrapeCrimelog():
     return jsonify(crime_Dict)
     #print(crime_Dict)
     
-    #return "Hello World"
 if __name__ == '__main__':
-    # Bind to PORT if defined, otherwise default to 5000.
-    #scrapeCrimelog()
-    #port = int(os.environ.get('PORT', 3000))
-    #app.run('localhost', port)
-    app.run(port=os.environ.get('PORT', '3000'))
+    # Bind to PORT if defined, otherwise default to 3000.
+    port = int(os.environ.get('PORT', 3000))
+    app.run('localhost', port)
